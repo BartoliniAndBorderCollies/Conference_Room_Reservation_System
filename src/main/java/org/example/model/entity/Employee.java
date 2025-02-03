@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -16,8 +18,6 @@ public class Employee {
     private Long id;
     private String firstName;
     private String lastName;
-    @OneToOne
-    private ConferenceRoom conferenceRoom;
-
-
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservation> reservations;
 }
