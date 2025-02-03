@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.model.EventType;
 
 import java.time.LocalDateTime;
 
@@ -18,8 +19,13 @@ public class Reservation {
     private Long id;
     private LocalDateTime reservationStartTime;
     private LocalDateTime reservationEndTime;
+    @ManyToOne
+    @JoinColumn(name = "conference_room_id")
     private ConferenceRoom conferenceRoom;
+    @Enumerated(EnumType.STRING)
     private EventType eventType;
     private boolean isCyclic;
-
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 }
