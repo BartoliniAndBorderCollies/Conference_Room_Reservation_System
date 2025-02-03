@@ -1,4 +1,4 @@
-package org.example.model.entity;
+package org.example.model;
 
 public enum EventType {
 
