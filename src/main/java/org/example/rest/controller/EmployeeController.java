@@ -15,7 +15,7 @@ public class EmployeeController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    EmployeeDTOResponse createEmployee(@RequestBody EmployeeDTORequest employeeDTORequest) {
+    EmployeeDTOResponse create(@RequestBody EmployeeDTORequest employeeDTORequest) {
         return employeeService.create(employeeDTORequest);
     }
 }
