@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.klodnicki.DTO.EmployeeDTO.EmployeeDTORequest;
 import org.klodnicki.DTO.EmployeeDTO.EmployeeDTOResponse;
+import org.klodnicki.exception.NotFoundInDatabaseException;
 import org.klodnicki.model.entity.Employee;
 import org.klodnicki.repository.EmployeeRepository;
 import org.mockito.InjectMocks;
@@ -13,11 +14,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
 import java.util.ArrayList;
-
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class EmployeeServiceTest {
@@ -31,6 +31,7 @@ class EmployeeServiceTest {
     private EmployeeRepository employeeRepository;
     @InjectMocks
     private EmployeeService employeeService;
+    Long nonExistentId = 999L;
 
     @BeforeEach
     void setUp() {
@@ -57,6 +58,18 @@ class EmployeeServiceTest {
         verify(modelMapper).map(employeeDTORequest, Employee.class);
         verify(employeeRepository).save(employee);
         verify(modelMapper).map(employee, EmployeeDTOResponse.class);
+    }
+
+    @Test
+    public void deleteById_ShouldThrowNotFoundInDatabaseException_WhenEmployeeNotExist() {
+        //Arrange
+        when(employeeRepository.findById(nonExistentId)).thenReturn(Optional.empty());
+
+        //Act and assert
+        assertThrows(NotFoundInDatabaseException.class, ()-> employeeService.deleteById(nonExistentId));
+
+        // Upewniam się, że metoda delete() nie została wywołana, bo wcześniej powinien zostać rzucony wyjątek.
+        verify(employeeRepository, never()).delete(any(Employee.class));
     }
 
 }
