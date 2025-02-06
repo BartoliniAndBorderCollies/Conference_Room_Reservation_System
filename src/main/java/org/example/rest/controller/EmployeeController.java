@@ -25,4 +25,9 @@ public class EmployeeController {
     void deleteById(@PathVariable Long id) throws NotFoundInDatabaseException {
         employeeService.deleteById(id);
     }
+
+    @GetMapping("/{id}")
+    EmployeeDTOResponse findById(@PathVariable Long id) throws NotFoundInDatabaseException {
+        return employeeService.findById(id);
+    }
 }
