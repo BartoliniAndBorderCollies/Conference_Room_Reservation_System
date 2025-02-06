@@ -73,4 +73,18 @@ class EmployeeServiceTest {
         verify(employeeRepository, never()).delete(any(Employee.class));
     }
 
+    @Test
+    public void deleteById_ShouldFindAndDeleteEmployee_WhenEmployeeIdIsGiven() throws NotFoundInDatabaseException {
+        //Arrange
+        Long employeeId = 1L;
+        when(employeeRepository.findById(employeeId)).thenReturn(Optional.of(employee));
+        doNothing().when(employeeRepository).delete(employee);
+
+        //Act
+        employeeService.deleteById(employeeId);
+
+        // Assert - Sprawdzam czy wywołano `findById()` i `delete()`
+        verify(employeeRepository).findById(employeeId);
+        verify(employeeRepository).delete(employee);
+    }
 }
