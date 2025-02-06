@@ -31,4 +31,10 @@ public class EmployeeService implements GenericBasicCrudOperations<EmployeeDTORe
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new NotFoundInDatabaseException(Employee.class));
         employeeRepository.delete(employee);
     }
+
+    @Override
+    public EmployeeDTOResponse findById(Long id) throws NotFoundInDatabaseException {
+        Employee employee = employeeRepository.findById(id).orElseThrow(() -> new NotFoundInDatabaseException(Employee.class));
+        return modelMapper.map(employee, EmployeeDTOResponse.class);
+    }
 }
