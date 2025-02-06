@@ -31,7 +31,8 @@ class EmployeeServiceTest {
     private EmployeeRepository employeeRepository;
     @InjectMocks
     private EmployeeService employeeService;
-    Long nonExistentId = 999L;
+    private static final Long NON_EXISTENT_ID = 999L;
+
 
     @BeforeEach
     void setUp() {
@@ -63,10 +64,10 @@ class EmployeeServiceTest {
     @Test
     public void deleteById_ShouldThrowNotFoundInDatabaseException_WhenEmployeeNotExist() {
         //Arrange
-        when(employeeRepository.findById(nonExistentId)).thenReturn(Optional.empty());
+        when(employeeRepository.findById(NON_EXISTENT_ID)).thenReturn(Optional.empty());
 
         //Act and assert
-        assertThrows(NotFoundInDatabaseException.class, ()-> employeeService.deleteById(nonExistentId));
+        assertThrows(NotFoundInDatabaseException.class, ()-> employeeService.deleteById(NON_EXISTENT_ID));
 
         // Upewniam się, że metoda delete() nie została wywołana, bo wcześniej powinien zostać rzucony wyjątek.
         verify(employeeRepository, never()).delete(any(Employee.class));
