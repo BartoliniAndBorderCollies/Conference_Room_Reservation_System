@@ -1,7 +1,7 @@
-package org.example.rest.controller.advice;
+package org.klodnicki.rest.controller.advice;
 
-import org.example.DTO.ResponseDTO;
-import org.example.exception.NotFoundInDatabaseException;
+import org.klodnicki.DTO.ResponseDTO;
+import org.klodnicki.exception.NotFoundInDatabaseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

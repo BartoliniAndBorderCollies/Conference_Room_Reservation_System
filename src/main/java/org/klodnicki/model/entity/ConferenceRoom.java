@@ -1,10 +1,10 @@
-package org.example.model.entity;
+package org.klodnicki.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.model.Equipment;
+import org.klodnicki.model.Equipment;
 
 import java.util.List;
 

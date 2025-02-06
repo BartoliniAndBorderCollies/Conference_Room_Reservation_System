@@ -1,6 +1,6 @@
-package org.example.service.generic;
+package org.klodnicki.service.generic;
 
-import org.example.exception.NotFoundInDatabaseException;
+import org.klodnicki.exception.NotFoundInDatabaseException;
 
 public interface GenericBasicCrudOperations<T, K, ID> {
 

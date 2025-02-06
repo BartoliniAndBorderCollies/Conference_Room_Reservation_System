@@ -1,4 +1,4 @@
-package org.example.config;
+package org.klodnicki.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

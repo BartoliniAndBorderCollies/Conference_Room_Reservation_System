@@ -1,4 +1,4 @@
-package org.example.exception;
+package org.klodnicki.exception;
 
 public class NotFoundInDatabaseException extends Exception{
 

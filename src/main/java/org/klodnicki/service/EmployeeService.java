@@ -1,12 +1,12 @@
-package org.example.service;
+package org.klodnicki.service;
 
 import lombok.AllArgsConstructor;
-import org.example.DTO.EmployeeDTO.EmployeeDTORequest;
-import org.example.DTO.EmployeeDTO.EmployeeDTOResponse;
-import org.example.exception.NotFoundInDatabaseException;
-import org.example.model.entity.Employee;
-import org.example.repository.EmployeeRepository;
-import org.example.service.generic.GenericBasicCrudOperations;
+import org.klodnicki.DTO.EmployeeDTO.EmployeeDTORequest;
+import org.klodnicki.DTO.EmployeeDTO.EmployeeDTOResponse;
+import org.klodnicki.exception.NotFoundInDatabaseException;
+import org.klodnicki.model.entity.Employee;
+import org.klodnicki.repository.EmployeeRepository;
+import org.klodnicki.service.generic.GenericBasicCrudOperations;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

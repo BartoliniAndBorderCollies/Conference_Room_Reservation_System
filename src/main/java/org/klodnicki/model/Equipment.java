@@ -1,4 +1,4 @@
-package org.example.model;
+package org.klodnicki.model;
 public enum Equipment {
 
     PROJECTOR,

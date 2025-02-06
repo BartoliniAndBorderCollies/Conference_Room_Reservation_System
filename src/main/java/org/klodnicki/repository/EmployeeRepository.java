@@ -1,6 +1,6 @@
-package org.example.repository;
+package org.klodnicki.repository;
 
-import org.example.model.entity.Employee;
+import org.klodnicki.model.entity.Employee;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

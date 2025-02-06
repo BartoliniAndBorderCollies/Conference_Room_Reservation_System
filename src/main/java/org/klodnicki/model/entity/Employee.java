@@ -1,4 +1,4 @@
-package org.example.model.entity;
+package org.klodnicki.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

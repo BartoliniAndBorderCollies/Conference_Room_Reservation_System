@@ -1,4 +1,4 @@
-package org.example.DTO.EmployeeDTO;
+package org.klodnicki.DTO.EmployeeDTO;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

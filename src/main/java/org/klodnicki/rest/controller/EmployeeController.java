@@ -1,10 +1,10 @@
-package org.example.rest.controller;
+package org.klodnicki.rest.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.DTO.EmployeeDTO.EmployeeDTORequest;
-import org.example.DTO.EmployeeDTO.EmployeeDTOResponse;
-import org.example.exception.NotFoundInDatabaseException;
-import org.example.service.EmployeeService;
+import org.klodnicki.DTO.EmployeeDTO.EmployeeDTORequest;
+import org.klodnicki.DTO.EmployeeDTO.EmployeeDTOResponse;
+import org.klodnicki.exception.NotFoundInDatabaseException;
+import org.klodnicki.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
