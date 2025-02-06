@@ -3,7 +3,6 @@ package org.example.rest.controller;
 import lombok.AllArgsConstructor;
 import org.example.DTO.EmployeeDTO.EmployeeDTORequest;
 import org.example.DTO.EmployeeDTO.EmployeeDTOResponse;
-import org.example.DTO.ResponseDTO;
 import org.example.exception.NotFoundInDatabaseException;
 import org.example.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -22,8 +21,8 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    ResponseDTO deleteById(@PathVariable Long id) throws NotFoundInDatabaseException {
-        return employeeService.deleteById(id);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteById(@PathVariable Long id) throws NotFoundInDatabaseException {
+        employeeService.deleteById(id);
     }
 }
