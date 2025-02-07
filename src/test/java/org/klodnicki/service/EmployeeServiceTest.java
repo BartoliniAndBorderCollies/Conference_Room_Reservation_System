@@ -88,4 +88,15 @@ class EmployeeServiceTest {
         verify(employeeRepository).findById(employeeId);
         verify(employeeRepository).delete(employee);
     }
+
+    @Test
+    public void findById_ShouldThrowNotFoundInDatabaseException_WhenEmployeeNotExist() {
+        //Arrange
+        when(employeeRepository.findById(NON_EXISTENT_ID)).thenReturn(Optional.empty());
+
+        //Act & assert
+        assertThrows(NotFoundInDatabaseException.class, ()-> employeeService.findById(NON_EXISTENT_ID));
+    }
+
+
 }
