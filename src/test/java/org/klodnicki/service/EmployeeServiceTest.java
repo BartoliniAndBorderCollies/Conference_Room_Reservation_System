@@ -32,6 +32,7 @@ class EmployeeServiceTest {
     @InjectMocks
     private EmployeeService employeeService;
     private static final Long NON_EXISTENT_ID = 999L;
+    private static final Long EXISTENT_ID = 1L;
 
 
     @BeforeEach
@@ -77,15 +78,14 @@ class EmployeeServiceTest {
     @Test
     public void deleteById_ShouldFindAndDeleteEmployee_WhenEmployeeIdIsGiven() throws NotFoundInDatabaseException {
         //Arrange
-        Long employeeId = 1L;
-        when(employeeRepository.findById(employeeId)).thenReturn(Optional.of(employee));
+        when(employeeRepository.findById(EXISTENT_ID)).thenReturn(Optional.of(employee));
         doNothing().when(employeeRepository).delete(employee);
 
         //Act
-        employeeService.deleteById(employeeId);
+        employeeService.deleteById(EXISTENT_ID);
 
         // Assert - Sprawdzam czy wywołano `findById()` i `delete()`
-        verify(employeeRepository).findById(employeeId);
+        verify(employeeRepository).findById(EXISTENT_ID);
         verify(employeeRepository).delete(employee);
     }
 
