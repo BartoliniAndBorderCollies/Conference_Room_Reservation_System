@@ -98,5 +98,17 @@ class EmployeeServiceTest {
         assertThrows(NotFoundInDatabaseException.class, ()-> employeeService.findById(NON_EXISTENT_ID));
     }
 
+    @Test
+    public void findById_ShouldFindAndReturnMappedEmployee_WhenEmployeeExists() throws NotFoundInDatabaseException {
+        //Arrange
+        when(employeeRepository.findById(EXISTENT_ID)).thenReturn(Optional.of(employee));
+        when(modelMapper.map(employee, EmployeeDTOResponse.class)).thenReturn(employeeDTOResponse);
 
+        //Act
+        EmployeeDTOResponse actualResponse = employeeService.findById(EXISTENT_ID);
+
+        //Assert
+        assertNotNull(actualResponse);
+        assertEquals(employeeDTOResponse, actualResponse);
+    }
 }
