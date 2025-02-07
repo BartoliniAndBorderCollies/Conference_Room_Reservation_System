@@ -36,6 +36,7 @@ class EmployeeServiceTest {
 
     @BeforeEach
     void setUp() {
+        // Tworzę przykładowe obiekty, które będą używane w testach
         employeeDTORequest = new EmployeeDTORequest("Adam", "Brown");
         employee = new Employee(1L, "Adam", "Brown",new ArrayList<>());
         employeeDTOResponse = new EmployeeDTOResponse(1L, "Adam", "Brown", new ArrayList<>());
