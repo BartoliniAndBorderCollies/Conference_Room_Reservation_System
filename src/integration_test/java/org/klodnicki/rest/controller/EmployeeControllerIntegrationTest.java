@@ -62,5 +62,18 @@ class EmployeeControllerIntegrationTest {
                 });
     }
 
+    @Test
+    void delete_ShouldDeleteEmployeeAndReturnNoContentStatus_WhenEmployeeExists() {
+
+        webTestClient.delete()
+                .uri(MAIN_ENDPOINT + "/" + employee.getId())
+                .exchange()
+                .expectStatus().isNoContent()
+                .expectBody().isEmpty();
+
+        //Verify
+        Optional<Employee> deletedEmployee = employeeRepository.findById(employee.getId());
+        assertTrue(deletedEmployee.isEmpty());
+    }
 
 }
