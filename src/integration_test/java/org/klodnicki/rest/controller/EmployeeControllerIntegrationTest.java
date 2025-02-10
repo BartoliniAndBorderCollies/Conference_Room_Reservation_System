@@ -1,6 +1,7 @@
 package org.klodnicki.rest.controller;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.klodnicki.DTO.EmployeeDTO.EmployeeDTORequest;
 import org.klodnicki.DTO.EmployeeDTO.EmployeeDTOResponse;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,10 +27,16 @@ class EmployeeControllerIntegrationTest {
     private static final String MAIN_ENDPOINT = "api/v1/employee";
     @Autowired
     private EmployeeRepository employeeRepository;
+    private Employee employee = new Employee(null, "TestName", "TestLastName", new ArrayList<>());
 
     @AfterEach
     void cleanDatabase() {
         employeeRepository.deleteAll();
+    }
+
+    @BeforeEach
+    void saveEmployeeInDatabase() {
+        employee = employeeRepository.save(employee); //employee ma w inicjalizacji null, więc przypisuję tu obiekt z poprawnym ID
     }
 
     @Test
