@@ -76,4 +76,22 @@ class EmployeeControllerIntegrationTest {
         assertTrue(deletedEmployee.isEmpty());
     }
 
+    @Test
+    void findById_ShouldReturnEmployeeFromDatabase_WhenIdIsGiven() {
+
+        webTestClient.get()
+                .uri(MAIN_ENDPOINT + "/" + employee.getId())
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(EmployeeDTOResponse.class)
+                .consumeWith(response -> {
+                    EmployeeDTOResponse actualResponse = response.getResponseBody();
+                    assertNotNull(actualResponse);
+
+                    assertEquals(employee.getId(), actualResponse.getId());
+                    assertEquals(employee.getFirstName(), actualResponse.getFirstName());
+                    assertEquals(employee.getLastName(), actualResponse.getLastName());
+                });
+    }
+
 }
