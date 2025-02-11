@@ -23,6 +23,6 @@ public class ConferenceRoom {
     @Column(name = "equipment")
     @Enumerated(EnumType.STRING)
     private List<Equipment> equipmentList;
-    @OneToMany(mappedBy = "conferenceRoom", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "conferenceRoom", cascade = CascadeType.ALL, orphanRemoval = true) //orhpan removal -> jak usunę rezerwację z listy to zostanie ona usunieta również z bazy danych
     private List<Reservation> reservations;
 }
