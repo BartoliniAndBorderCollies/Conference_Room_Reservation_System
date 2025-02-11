@@ -24,7 +24,7 @@ public class Reservation {
     private ConferenceRoom conferenceRoom;
     @Enumerated(EnumType.STRING)
     private EventType eventType;
-    private boolean isCyclic;
+    private boolean cyclic;
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
