@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.klodnicki.DTO.ReservationDTOResponse;
+import org.klodnicki.DTO.ReservationDTO.ReservationDTOResponse;
 import org.klodnicki.model.Equipment;
 
 import java.util.List;
