@@ -1,4 +1,4 @@
-package org.klodnicki.DTO;
+package org.klodnicki.DTO.ResponseDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
