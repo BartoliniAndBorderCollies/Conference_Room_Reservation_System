@@ -17,6 +17,7 @@ public class ConferenceRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    private String name;
     private int personLimit;
     @ElementCollection
     @CollectionTable(name = "conference_room_equipment", joinColumns = @JoinColumn(name = "conference_room_id"))
