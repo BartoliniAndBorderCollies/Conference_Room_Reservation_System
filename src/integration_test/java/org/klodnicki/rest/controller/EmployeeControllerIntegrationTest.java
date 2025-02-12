@@ -24,7 +24,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmployeeControllerIntegrationTest {
     @Autowired
     private WebTestClient webTestClient;
-    private static final String MAIN_ENDPOINT = "api/v1/employee";
+    private static final String MAIN_ENDPOINT = "/employee";//UWAGA: korzystam z ApiController gdzie ustawiam główny endpoint
+    // Jednak Spring nie dziedziczy adnotacji @RequestMapping z  klasy bazowej – adnotacja umieszczona na klasie bazowej
+    // nie zostanie automatycznie połączona z adnotacją w klasie dziedziczącej. Dlatego tu w teście podaję trochę inny endpoint
     @Autowired
     private EmployeeRepository employeeRepository;
     private Employee employee = new Employee(null, "TestName", "TestLastName", new ArrayList<>());
