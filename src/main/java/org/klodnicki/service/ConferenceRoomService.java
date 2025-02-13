@@ -17,8 +17,11 @@ public class ConferenceRoomService implements GenericBasicCrudOperations<Confere
     private final ModelMapper modelMapper;
 
     @Override
-    public ConferenceRoomDTOResponse create(ConferenceRoomDTORequest object) {
-        return null;
+    public ConferenceRoomDTOResponse create(ConferenceRoomDTORequest conferenceRoomDTORequest) {
+        ConferenceRoom conferenceRoom = modelMapper.map(conferenceRoomDTORequest, ConferenceRoom.class);
+        conferenceRoomRepository.save(conferenceRoom);
+
+        return modelMapper.map(conferenceRoom, ConferenceRoomDTOResponse.class);
     }
 
     @Override
