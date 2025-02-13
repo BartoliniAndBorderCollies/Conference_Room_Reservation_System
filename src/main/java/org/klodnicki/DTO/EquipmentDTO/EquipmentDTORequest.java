@@ -14,6 +14,6 @@ public class EquipmentDTORequest {
 
     private String name;
     private int amount;
-    private ConferenceRoom conferenceRoom;
+    private ConferenceRoom conferenceRoom;//TODO change to DTO
     private boolean available;
 }
