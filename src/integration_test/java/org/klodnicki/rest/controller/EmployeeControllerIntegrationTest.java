@@ -24,13 +24,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmployeeControllerIntegrationTest {
     @Autowired
     private WebTestClient webTestClient;
-    private static final String MAIN_ENDPOINT = "/employee";//UWAGA: korzystam z ApiController gdzie ustawiam główny endpoint
-    // Jednak Spring nie dziedziczy adnotacji @RequestMapping z  klasy bazowej – adnotacja umieszczona na klasie bazowej
-    // nie zostanie automatycznie połączona z adnotacją w klasie dziedziczącej. Dlatego tu w teście podaję trochę inny endpoint
     @Autowired
     private EmployeeRepository employeeRepository;
     private Employee employee = new Employee(null, "TestName", "TestLastName", new ArrayList<>());
-
+    private static final String MAIN_PATH = "/api/v1/employee";
     @AfterEach
     void cleanDatabase() {
         employeeRepository.deleteAll();
@@ -47,7 +44,7 @@ class EmployeeControllerIntegrationTest {
         EmployeeDTORequest employeeDTORequest = new EmployeeDTORequest("Adam", "Brown");
 
         webTestClient.post()
-                .uri(MAIN_ENDPOINT)
+                .uri(MAIN_PATH)
                 .bodyValue(employeeDTORequest)
                 .exchange()
                 .expectStatus().isCreated()
@@ -68,7 +65,7 @@ class EmployeeControllerIntegrationTest {
     void delete_ShouldDeleteEmployeeAndReturnNoContentStatus_WhenEmployeeExists() {
 
         webTestClient.delete()
-                .uri(MAIN_ENDPOINT + "/" + employee.getId())
+                .uri(MAIN_PATH + "/" + employee.getId())
                 .exchange()
                 .expectStatus().isNoContent()
                 .expectBody().isEmpty();
@@ -82,7 +79,7 @@ class EmployeeControllerIntegrationTest {
     void findById_ShouldReturnEmployeeFromDatabase_WhenIdIsGiven() {
 
         webTestClient.get()
-                .uri(MAIN_ENDPOINT + "/" + employee.getId())
+                .uri(MAIN_PATH + "/" + employee.getId())
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(EmployeeDTOResponse.class)
