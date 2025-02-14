@@ -9,9 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/employee")
 @AllArgsConstructor
-public class EmployeeController extends ApiController {
+@RequestMapping("${api.version}/employee")
+public class EmployeeController {
     private final EmployeeService employeeService;
 
     @PostMapping()
